@@ -1,48 +1,65 @@
-# Evaluación Módulo 3 – Exploración y Visualización de Datos
+# Evaluación Módulo 3 – Análisis de Vuelos y Clientes
 
-Este proyecto corresponde a la evaluación del Módulo 3 del bootcamp.  
-El objetivo es limpiar y explorar dos datasets de clientes y vuelos, y responder a las 6 preguntas planteadas mediante visualizaciones.  
-Se incluye además un bonus con una prueba de hipótesis (ANOVA) para analizar diferencias en vuelos reservados según el nivel educativo.
+Este proyecto corresponde a la **evaluación final del Módulo 3** del bootcamp de Data Analytics en Adalab.  
+El objetivo es analizar el comportamiento de los clientes de una aerolínea, utilizando datos de vuelos y de su programa de fidelidad.
+
+---
 
 ## Archivos incluidos
-- `Evaluacion3.ipynb` → notebook principal con todo el análisis.
-- `Customer Flight Activity.csv`
-- `Customer Loyalty History.csv`
+
+- `Evaluacion3.ipynb`: Notebook principal con todo el análisis paso a paso.
+- `Customer Flight Activity.csv`: Dataset con información de la actividad de vuelos (número de vuelos, distancia, puntos acumulados, etc.).
+- `Customer Loyalty History.csv`: Dataset con información de los clientes (salario, nivel educativo, estado civil, tipo de tarjeta de fidelidad, etc.).
+- `README.md`: Este archivo de documentación.
+
+---
+
+## Contenido del análisis
+
+1. **Pre-EDA y limpieza de datos**  
+   - Revisión de nulos, duplicados y tipos de datos.  
+   - Transformación de columnas temporales (año, mes) y creación de columna `date`.  
+   - Consolidación de registros por cliente/año/mes.
+
+2. **Análisis exploratorio (EDA)**  
+   - Distribución de vuelos reservados a lo largo de los meses y años.  
+   - Relación entre distancia y puntos acumulados.  
+   - Distribución de clientes por provincia/estado.  
+   - Análisis de salario medio por nivel educativo.  
+   - Proporción de clientes por tipo de tarjeta de fidelidad.  
+   - Distribución de clientes según estado civil y género.
+
+3. **Estadística descriptiva e inferencial**  
+   - Medidas de tendencia central (media, mediana, moda).  
+   - Medidas de dispersión (desviación estándar, varianza).  
+   - Intervalos de confianza para reservas de vuelos según nivel educativo.  
+   - Pruebas de hipótesis para evaluar diferencias significativas entre grupos.
+
+4. **Visualizaciones principales**  
+   - Histogramas y boxplots para variables numéricas.  
+   - Gráficas de barras y “pie charts” para categóricas.  
+   - Scatterplots para relaciones numéricas.  
+   - Heatmap de correlaciones.
+
+---
+
+## Conclusiones globales
+
+- El **nivel educativo** no influye de manera significativa en el número de vuelos reservados.  
+- El **tipo de tarjeta de fidelidad** muestra claras diferencias en la proporción de clientes.  
+- El **estado civil y el género** también reflejan patrones en la distribución de clientes.  
+- Factores como **tarjeta y características sociodemográficas** tienen más impacto que las variables académicas en el comportamiento de los clientes.
+
+---
 
 ## Requisitos
-- Python 3.x  
-- Librerías: `pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`
 
-## Ejecución
-1. Colocar los CSV en la misma carpeta que el notebook.  
-2. Abrir `Evaluacion3.ipynb` en Jupyter/VSCode.  
-3. Ejecutar todas las celdas en orden.  
+El análisis fue realizado en Python 3. Se requiere instalar las librerías:
 
-## Objetivo docente
-Los objetivos de este módulo y de la presente evaluación son:  
-- Python básico (funciones y conceptos del primer módulo).  
-- Uso de Pandas.  
-- Análisis exploratorio de datos (EDA).  
-- Gestión de nulos.  
-- Visualización de datos con matplotlib y seaborn.  
-- Estadística descriptiva.  
-- Estadística inferencial.  
+```bash
+pip install pandas numpy matplotlib seaborn scipy
+✍️ Autor: Ela Ruiz González
+📅 Octubre 2025
 
-## Notas metodológicas
-- Primero se creó `df_flight_clean` tras depuración de datos.  
-- Posteriormente se generó `df_flight_grouped` agrupando por `loyalty_number`, `year` y `month`.  
-  - Esto convierte la clave primaria en compuesta (`loyalty_number`, `year`, `month`).  
-  - Así cada fila representa la actividad de un cliente en un mes.  
-  - El cambio de nombre a `df_flight_grouped` se hizo para diferenciarlo claramente del DataFrame original.  
-- En las preguntas que requieren proporción de clientes (ej. tipo de tarjeta de fidelidad), se trabajó con un DataFrame reducido a **una fila por cliente** para evitar duplicaciones.  
-- En gráficos categóricos se usaron barplots de medias, ya que los datos están agrupados y no es posible aplicar boxplots sobre distribuciones individuales.
 
-## Retos encontrados
-- Necesidad de agrupar por cliente, año y mes para definir correctamente la clave primaria.  
-- Limitación de algunos gráficos de distribución (como boxplot) debido a que los datos estaban ya agregados.  
-- Manejo de duplicados para no sobre-representar clientes con muchos vuelos.  
-- El principal reto ha sido aplicar en un único proyecto toda la cantidad de conceptos vistos en este módulo en un tiempo limitado. Esto exigió priorizar claridad y sencillez.
-
-## Autoría
-Ela Ruiz González
 
